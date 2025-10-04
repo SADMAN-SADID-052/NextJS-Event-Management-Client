@@ -14,6 +14,14 @@ images: {
          {
             protocol: 'https',
             hostname: 'images.unsplash.com'
+        },
+        {
+
+
+
+         protocol: 'https',
+        hostname: 'media.istockphoto.com'
+
         }
     ]
 }
