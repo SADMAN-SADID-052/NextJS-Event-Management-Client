@@ -27,9 +27,9 @@ export default function RootLayout({ children }) {
         <NavBar></NavBar>
         <main className="h-screen h-max-[600px]">{children}</main>
 
-        <footer className="text-center bg-stone-500">
+        {/* <footer className="text-center bg-stone-500">
           Awesome NextJS Project
-        </footer>
+        </footer> */}
       </body>
     </html>
   );

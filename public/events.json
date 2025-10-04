@@ -1,0 +1,78 @@
+[
+  {
+    "title": "Tech Conference 2025",
+    "name": "Alice Johnson",
+    "image":"https://images.unsplash.com/photo-1582192730841-2a682d7375f9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8VGVjaCUyMENvbmZlcmVuY2V8ZW58MHx8MHx8fDA%3D",
+    "location": "Dhaka, Bangladesh",
+    "description": "A gathering of tech enthusiasts discussing AI, Web3, and cloud computing.",
+    "attendeeCount": 0
+  },
+  {
+    "title": "Startup Pitch Night",
+    "name": "Rahul Kumar",
+    "location": "Barishal University Auditorium",
+    "description": "Startups pitch their innovative ideas to investors and mentors.",
+    "attendeeCount": 0
+  },
+  {
+    "title": "Digital Marketing Workshop",
+    "name": "Sophia Lee",
+    "image":"https://images.unsplash.com/photo-1682310917377-6a967783ef40?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fFN0YXJ0dXAlMjBQaXRjaCUyME5pZ2h0fGVufDB8fDB8fHww",
+    "location": "Chittagong IT Park",
+    "description": "Hands-on workshop on SEO, SEM, and social media marketing strategies.",
+    "attendeeCount": 0
+  },
+  {
+    "title": "Hackathon 2025",
+    "name": "Imran Hossain",
+    "image":"https://images.unsplash.com/photo-1563461660947-507ef49e9c47?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8SGFja2F0aG9ufGVufDB8fDB8fHww",
+    "location": "Dhaka Innovation Hub",
+    "description": "24-hour hackathon where teams build solutions to real-world problems.",
+    "attendeeCount": 0
+  },
+  {
+    "title": "Photography Exhibition",
+    "name": "Emily Carter",
+    "image":"https://images.unsplash.com/photo-1621685743771-fd5e13734ae6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8UGhvdG9ncmFwaHklMjBFeGhpYml0aW9ufGVufDB8fDB8fHww",
+    "location": "Sylhet Art Gallery",
+    "description": "Exhibition of nature and street photography by local talents.",
+    "attendeeCount": 0
+  },
+  {
+    "title": "Book Fair 2025",
+    "name": "Md. Arif",
+    "image":"https://images.unsplash.com/photo-1523473125050-1c9405e8b208?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Qm9vayUyMEZhaXJ8ZW58MHx8MHx8fDA%3D",
+    "location": "Bangla Academy, Dhaka",
+    "description": "Annual book fair showcasing publishers, authors, and literature talks.",
+    "attendeeCount": 0
+  },
+  {
+    "title": "Music Fest",
+    "name": "David Wilson",
+    "image":"https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8TXVzaWMlMjBGZXN0fGVufDB8fDB8fHww",
+    "location": "Cox’s Bazar Beach",
+    "description": "Live performances by top bands and solo artists across genres.",
+    "attendeeCount": 0
+  },
+  {
+    "title": "Career Fair",
+    "name": "Nusrat Jahan",
+    "location": "Barishal University Campus",
+    "description": "Job opportunities and networking sessions with top companies.",
+    "attendeeCount": 0
+  },
+  {
+    "title": "Food Carnival",
+    "name": "Tanvir Ahmed",
+    "location": "Khulna Town Hall",
+    "description": "Food stalls, cooking competitions, and live music entertainment.",
+    "attendeeCount": 0
+  },
+  {
+    "title": "Robotics Expo",
+    "name": "Chen Wei",
+    "location": "Dhaka Science Museum",
+    "description": "A showcase of robotics innovations from students and professionals.",
+    "attendeeCount": 0
+  }
+]
