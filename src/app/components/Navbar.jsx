@@ -17,7 +17,7 @@ export default function NavBar() {
           <Link href={"/Events"}>Events</Link>
         </li>
         <li>
-          <Link href={"/"}>Add Event</Link>
+          <Link href={"/Addevent"}>Add Event</Link>
         </li>{" "}
     
         <li>

@@ -3,6 +3,7 @@ import "./globals.css";
 import Link from "next/link";
 import NavBar from "./components/Navbar";
 import Bannar from "./components/Bannar";
+import AboutUs from "./components/Aboutus";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +27,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NavBar></NavBar>
-        <Bannar></Bannar>
+      
         <main className="h-screen h-max-[600px]">{children}</main>
 
         {/* <footer className="text-center bg-stone-500">
