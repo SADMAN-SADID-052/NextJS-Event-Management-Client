@@ -1,230 +1,129 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+"use client";
+import { useEffect, useState } from "react";
 
-export default async function Events() {
-  // const data = await fetch("/events.json");
-  // const res = await fetch("/events.json")
+export default function EventsPage() {
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [joinedEvents, setJoinedEvents] = useState([]); 
+ 
+  useEffect(() => {
+    async function fetchEvents() {
+      try {
+        const res = await fetch("/api/getEvents");
+        const data = await res.json();
 
-  const data = [
-    {
-      service_id: "04",
-      title: "Engine Oil Change",
-      img: "https://images.unsplash.com/photo-1582192730841-2a682d7375f9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8VGVjaCUyMENvbmZlcmVuY2V8ZW58MHx8MHx8fDA%3D",
-      price: "20.00",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius veniam nostrum dolores nemo quas. Minima ullam, veniam, nesciunt quae dolore animi blanditiis deserunt, ea esse dolorum ipsum quibusdam ipsa! Corrupti at, excepturi, fugiat aut nihil neque aliquid sapiente dignissimos provident, animi molestiae ipsum. Repudiandae ipsa id nihil reiciendis soluta eos ducimus pariatur, nam architecto tenetur quo quos commodi est libero repellendus vitae. Fuga numquam nulla nam, facere neque expedita voluptatibus pariatur necessitatibus vel, dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum. Aspernatur ex quibusdam at cum nulla!",
-      facility: [
-        {
-          name: "Instant Car Services",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "24/7 Quality Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Easy Customer Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Quality Cost Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-      ],
-    },
-    {
-      service_id: "05",
-      title: "Battery Charge",
-      img: "https://images.unsplash.com/photo-1682310917377-6a967783ef40?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fFN0YXJ0dXAlMjBQaXRjaCUyME5pZ2h0fGVufDB8fDB8fHww",
-      price: "20.00",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius veniam nostrum dolores nemo quas. Minima ullam, veniam, nesciunt quae dolore animi blanditiis deserunt, ea esse dolorum ipsum quibusdam ipsa! Corrupti at, excepturi, fugiat aut nihil neque aliquid sapiente dignissimos provident, animi molestiae ipsum. Repudiandae ipsa id nihil reiciendis soluta eos ducimus pariatur, nam architecto tenetur quo quos commodi est libero repellendus vitae. Fuga numquam nulla nam, facere neque expedita voluptatibus pariatur necessitatibus vel, dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum. Aspernatur ex quibusdam at cum nulla!",
-      facility: [
-        {
-          name: "Instant Car Services",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "24/7 Quality Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Easy Customer Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Quality Cost Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-      ],
-    },
-    {
-      service_id: "01",
-      title: "Full car Repair",
-      img: "https://images.unsplash.com/photo-1563461660947-507ef49e9c47?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8SGFja2F0aG9ufGVufDB8fDB8fHww",
-      price: "200.00",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius veniam nostrum dolores nemo quas. Minima ullam, veniam, nesciunt quae dolore animi blanditiis deserunt, ea esse dolorum ipsum quibusdam ipsa! Corrupti at, excepturi, fugiat aut nihil neque aliquid sapiente dignissimos provident, animi molestiae ipsum. Repudiandae ipsa id nihil reiciendis soluta eos ducimus pariatur, nam architecto tenetur quo quos commodi est libero repellendus vitae. Fuga numquam nulla nam, facere neque expedita voluptatibus pariatur necessitatibus vel, dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum. Aspernatur ex quibusdam at cum nulla!",
-      facility: [
-        {
-          name: "Instant Car Services",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "24/7 Quality Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Easy Customer Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Quality Cost Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-      ],
-    },
-    {
-      service_id: "02",
-      title: "Engine Repair",
-      img: "https://images.unsplash.com/photo-1621685743771-fd5e13734ae6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8UGhvdG9ncmFwaHklMjBFeGhpYml0aW9ufGVufDB8fDB8fHww",
-      price: "150.00",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius veniam nostrum dolores nemo quas. Minima ullam, veniam, nesciunt quae dolore animi blanditiis deserunt, ea esse dolorum ipsum quibusdam ipsa! Corrupti at, excepturi, fugiat aut nihil neque aliquid sapiente dignissimos provident, animi molestiae ipsum. Repudiandae ipsa id nihil reiciendis soluta eos ducimus pariatur, nam architecto tenetur quo quos commodi est libero repellendus vitae. Fuga numquam nulla nam, facere neque expedita voluptatibus pariatur necessitatibus vel, dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum. Aspernatur ex quibusdam at cum nulla!",
-      facility: [
-        {
-          name: "Instant Car Services",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "24/7 Quality Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Easy Customer Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Quality Cost Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-      ],
-    },
-    {
-      service_id: "03",
-      title: "Automatic Services",
-      img: "https://images.unsplash.com/photo-1523473125050-1c9405e8b208?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Qm9vayUyMEZhaXJ8ZW58MHx8MHx8fDA%3D",
-      price: "30.00",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius veniam nostrum dolores nemo quas. Minima ullam, veniam, nesciunt quae dolore animi blanditiis deserunt, ea esse dolorum ipsum quibusdam ipsa! Corrupti at, excepturi, fugiat aut nihil neque aliquid sapiente dignissimos provident, animi molestiae ipsum. Repudiandae ipsa id nihil reiciendis soluta eos ducimus pariatur, nam architecto tenetur quo quos commodi est libero repellendus vitae. Fuga numquam nulla nam, facere neque expedita voluptatibus pariatur necessitatibus vel, dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum. Aspernatur ex quibusdam at cum nulla!",
-      facility: [
-        {
-          name: "Instant Car Services",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "24/7 Quality Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Easy Customer Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Quality Cost Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-      ],
-    },
-    {
-      service_id: "06",
-      title: "Electrical System",
-      img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8TXVzaWMlMjBGZXN0fGVufDB8fDB8fHww",
-      price: "20.00",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius veniam nostrum dolores nemo quas. Minima ullam, veniam, nesciunt quae dolore animi blanditiis deserunt, ea esse dolorum ipsum quibusdam ipsa! Corrupti at, excepturi, fugiat aut nihil neque aliquid sapiente dignissimos provident, animi molestiae ipsum. Repudiandae ipsa id nihil reiciendis soluta eos ducimus pariatur, nam architecto tenetur quo quos commodi est libero repellendus vitae. Fuga numquam nulla nam, facere neque expedita voluptatibus pariatur necessitatibus vel, dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum. Aspernatur ex quibusdam at cum nulla!",
-      facility: [
-        {
-          name: "Instant Car Services",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "24/7 Quality Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Easy Customer Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Quality Cost Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-      ],
-    },
-  ];
+        // Sort: latest date/time first
+        const sorted = data.sort(
+          (a, b) => new Date(b.dateTime) - new Date(a.dateTime)
+        );
+
+        setEvents(sorted);
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchEvents();
+  }, []);
+
+  // Handle join event
+  const handleJoin = async (id) => {
+    
+    if (joinedEvents.includes(id)) {
+      alert("You already joined this event!");
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/joinEvent", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ eventId: id }),
+      });
+
+      if (res.ok) {
+        setJoinedEvents((prev) => [...prev, id]);
+        setEvents((prevEvents) =>
+          prevEvents.map((e) =>
+            e._id === id ? { ...e, attendeeCount: (e.attendeeCount || 0) + 1 } : e
+          )
+        );
+      } else {
+        const { message } = await res.json();
+        alert(message);
+      }
+    } catch (error) {
+      console.error("Join event error:", error);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <p className="text-gray-600 text-xl">Loading events...</p>
+      </div>
+    );
+  }
 
   return (
-  <div className="grid grid-cols-12 gap-4 container  max-w-6xl mx-auto">
-      {data.map((item) => {
-        return (
-          <div
-            className="col-span-12 md:col-span-6 lg:col-span-4 p-4 h-full border"
-            key={item.service_id}
-          >
-            <figure className="w-full h-3/4 flex justify-center items-center">
-              <Image
-                className="w-full h-full object-fit"
-                src={item.img}
-                width={314}
-                height={108}
-                alt={item.title}
+    <div className="min-h-screen bg-gray-100 py-10 px-6">
+      <h2 className="text-3xl font-bold text-center mb-8">All Events</h2>
+
+      {events.length === 0 ? (
+        <p className="text-center text-gray-600 text-lg">
+          No events found. Add one to get started!
+        </p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {events.map((event) => (
+            <div
+              key={event._id}
+              className="bg-white p-5 rounded-xl shadow-md hover:shadow-xl transition-all"
+            >
+              <img
+                src={event.image || "https://via.placeholder.com/300x200"}
+                alt={event.title}
+                className="w-full h-48 object-cover rounded-lg mb-4"
               />
-            </figure>
-            <div className="flex justify-between items-center mt-4">
-              <div>
-                <h2 className="font-bold text-xl">{item.title}</h2>
-                <p className="font-bold text-xl text-orange-500">
-                  Price : ${item.price}
+              <h3 className="text-xl font-semibold mb-2 text-gray-800">
+                {event.title}
+              </h3>
+              <p className="text-gray-700 mb-2">
+                <span className="font-medium">By:</span> {event.name}
+              </p>
+              <p className="text-gray-700 mb-2">
+                <span className="font-medium">📍 Location:</span> {event.location}
+              </p>
+              <p className="text-gray-700 mb-2">
+                <span className="font-medium">📅 Date:</span>{" "}
+                {new Date(event.dateTime).toLocaleString()}
+              </p>
+              <p className="text-gray-600 text-sm mb-3">
+                {event.description?.slice(0, 100)}...
+              </p>
+
+              <div className="flex items-center justify-between mt-3">
+                <p className="text-blue-600 font-semibold">
+                  👥 Attendees: {event.attendeeCount || 0}
                 </p>
-              </div>
-              <div>
-                <Link
-                  href={`/services/${item._id}`}
-                  className="text-orange-500"
+                <button
+                  onClick={() => handleJoin(event._id)}
+                  className={`px-4 py-2 rounded-lg text-white font-medium transition ${
+                    joinedEvents.includes(event._id)
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-blue-600 hover:bg-blue-700"
+                  }`}
+                  disabled={joinedEvents.includes(event._id)}
                 >
-                  {/* <FaArrowRight /> */}
-                </Link>
+                  {joinedEvents.includes(event._id) ? "Joined" : "Join Event"}
+                </button>
               </div>
             </div>
-          </div>
-        );
-      })}
+          ))}
+        </div>
+      )}
     </div>
   );
 }

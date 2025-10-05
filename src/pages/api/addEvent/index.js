@@ -6,16 +6,28 @@ export default async function handler(req, res) {
       const client = await clientPromise;
       const db = client.db("event-app");
 
-      const body = req.body;
+      const {
+        title,
+        name,
+        image,
+        dateTime,
+        location,
+        description,
+      } = req.body;
 
       const result = await db.collection("events").insertOne({
-        title: body.title || "Untitled Event",
-        location: body.location || "Unknown",
-        date: new Date(),
+        title: title || "Untitled Event",
+        name: name || "Anonymous",
+        image: image || "",
+        dateTime: dateTime || new Date(),
+        location: location || "Unknown",
+        description: description || "No description provided",
+        attendeeCount: 0,
+        createdAt: new Date(),
       });
 
       res.status(200).json({
-        message: "✅ Event Added Successfully!",
+        message: "✅ Event added successfully!",
         insertedId: result.insertedId,
       });
     } catch (error) {
