@@ -4,8 +4,8 @@ import clientPromise from "@/lib/mongodb";
 
 export default async function handler(req, res) {
   try {
-    const client = await clientPromise; // connect MongoDB
-    const db = client.db("event-app"); // তোমার database নাম দাও
+    const client = await clientPromise; 
+    const db = client.db("event-app"); 
 
     const collections = await db.listCollections().toArray();
 

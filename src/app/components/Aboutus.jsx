@@ -5,7 +5,7 @@ import React from "react";
 // If you're using Next.js and want next/image, uncomment the next two lines and replace <img> with <Image>
 // import Image from "next/image";
 // // Make sure to whitelist remote image host in next.config.mjs
-
+const themeMode = useSelector((mode) => mode.themeToggle.mode)
 export default function AboutUs() {
   const team = [
     {
@@ -91,7 +91,15 @@ export default function AboutUs() {
 
         {/* Team */}
         <div className="mt-12">
-          <h3 className="text-2xl font-semibold">Meet the Team</h3>
+             <h2
+                        className={`text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r bg-clip-text text-transparent
+                        ${themeMode === "dark"
+                                ? "from-white via-blue-400 to-gray-300"
+                                : "from-gray-900 via-blue-800 to-slate-800"
+                            }`}
+                    >
+                        Featured Stories
+                    </h2>
           <p className="mt-2 text-gray-600 dark:text-gray-300">A small team building big experiences.</p>
 
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -127,6 +135,8 @@ export default function AboutUs() {
         <div className="mt-12 bg-gradient-to-r from-primary/10 to-secondary/10 p-6 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <h4 className="text-lg font-semibold">Ready to create your first event?</h4>
+
+            
             <p className="text-sm text-gray-600 dark:text-gray-300">Get started in minutes and invite your community.</p>
           </div>
           <div className="flex gap-3">
