@@ -27,7 +27,7 @@ export default function AboutUs() {
 
   return (
     <section className="bg-black py-16 px-6">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Hero */}
         <div className="grid gap-8 lg:grid-cols-2 items-center">
           <div>
@@ -42,10 +42,10 @@ export default function AboutUs() {
             </p>
 
             <div className="mt-6 flex gap-3 flex-wrap">
-              <a className="btn btn-primary" href="/register">
+              <a className="btn btn-primary rounded-sm" href="/register">
                 Join Now
               </a>
-              <Link className="btn btn-ghost" href="/Events">
+              <Link className="btn btn-outline text-[#605DFF] rounded-sm" href="/Events">
                 Browse Events
               </Link>
             </div>

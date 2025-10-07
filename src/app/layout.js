@@ -3,6 +3,7 @@ import "./globals.css";
 
 import NavBar from "./components/Navbar";
 import Providers from "./Redux/Providers";
+import Footer from "./components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
           {/* <footer className="text-center bg-stone-500">
             Awesome NextJS Project
           </footer> */}
+          <Footer></Footer>
         </Providers>
       </body>
     </html>

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Bannar = () => {
   // 🔹 Images for the rotating banner
@@ -37,10 +38,10 @@ const Bannar = () => {
 
         {/* Buttons */}
         <div className="flex gap-4 pt-4">
-          <button className="bg-[#8b5cf6] hover:bg-[#7c3aed] px-6 py-3 rounded-lg font-semibold transition">
+          <Link href="/" className="bg-[#605DFF] hover:bg-[#7c3aed] px-6 py-3 rounded-lg font-semibold">
             Buy Tickets
-          </button>
-          <button className="border border-[#8b5cf6] text-[#8b5cf6] hover:bg-[#8b5cf6] hover:text-white px-6 py-3 rounded-lg font-semibold transition">
+          </Link>
+          <button className="border border-[#605DFF] text-[#605DFF] hover:bg-[#8b5cf6] hover:text-white px-6 py-3 rounded-lg font-semibold transition">
             See Schedule
           </button>
 
