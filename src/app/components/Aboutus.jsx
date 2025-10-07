@@ -52,7 +52,6 @@ export default function AboutUs() {
           </div>
 
           <div className="rounded-xl overflow-hidden shadow-lg ">
-      
             <img
               src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=5b5b7f101a8b2d6d541a7a9a1d3a9c9c"
               alt="events crowd"
@@ -63,9 +62,10 @@ export default function AboutUs() {
 
         {/* Mission & Stats */}
         <div className="mt-12 grid gap-8 lg:grid-cols-3">
-          <article className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm"
+          <article
+            className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm"
             style={{
-                backgroundImage: `linear-gradient(135deg, rgba(30, 64, 175, 0.9), rgba(55, 65, 81, 0.8)), url("https://res.cloudinary.com/dloasaxt1/image/upload/v1758538560/7472e3205063d5e8003bca47d4c4b781_blgerc.jpg")`,
+              backgroundImage: `linear-gradient(135deg, rgba(30, 64, 175, 0.9), rgba(55, 65, 81, 0.8)), url("https://res.cloudinary.com/dloasaxt1/image/upload/v1758538560/7472e3205063d5e8003bca47d4c4b781_blgerc.jpg")`,
             }}
           >
             <h3 className="text-lg font-semibold text-white">Our Mission</h3>
@@ -103,19 +103,21 @@ export default function AboutUs() {
 
         {/* Team */}
         <div className="mt-12">
-          <h2
-            className={`text-3xl md:text-4xl font-bold mb-6 text-center bg-gradient-to-r bg-clip-text text-transparent
-    ${
-      themeMode === "dark"
-        ? "from-white via-blue-300 to-gray-300"
-        : "from-gray-800 via-blue-700 to-slate-900"
-    }`}
-          >
-            Meet Our Team
-          </h2>
+          <div>
+            <h2
+              className={`text-3xl md:text-4xl  font-bold mb-4 bg-gradient-to-r bg-clip-text text-transparent
+                        ${
+                          themeMode === "dark"
+                            ? "from-white via-blue-500 to-gray-400"
+                            : "from-gray-400 via-blue-700 to-slate-600"
+                        }`}
+            >
+              Meet Our Team
+            </h2>
+          </div>
 
-          <div className="h-1 w-36 bg-gradient-to-r from-blue-400 to-indigo-500 mx-auto rounded-full animate-pulse" />
-          <p className="mt-2 text-gray-600 dark:text-gray-300">
+          <div className="h-1 w-46 bg-gradient-to-r from-blue-400 to-indigo-500  rounded-full animate-pulse" />
+          <p className="mt-2 text-gray-300">
             A small team building big experiences.
           </p>
 
@@ -123,7 +125,7 @@ export default function AboutUs() {
             {team.map((m) => (
               <div
                 key={m.name}
-                className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow hover:shadow-lg transition hover:border-2 hover:border-purple-900"
+                className="bg-gray-800 rounded-xl p-5 shadow hover:shadow-lg transition hover:border-2 hover:border-purple-900"
               >
                 <div className="flex items-center gap-4 ">
                   <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
@@ -132,28 +134,29 @@ export default function AboutUs() {
                       alt={m.name}
                       className="w-full h-full object-cover"
                     />
-                    {/* If using Next/Image:
-                        <Image src={m.photo} width={64} height={64} alt={m.name} className="rounded-full" />
-                    */}
                   </div>
                   <div>
-                    <h4 className="font-semibold">{m.name}</h4>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                      {m.role}
-                    </p>
+                    <h4 className="font-semibold text-white">{m.name}</h4>
+                    <p className="text-sm text-gray-400">{m.role}</p>
                   </div>
                 </div>
 
-                <p className="mt-4 text-sm text-gray-600 dark:text-gray-300">
+                <p className="mt-4 text-sm text-gray-300">
                   Passionate about building useful tools for communities and
                   creating delightful event experiences.
                 </p>
 
                 <div className="mt-4 flex gap-2">
-                  <Link className="btn btn-sm btn-outline" href="#">
+                  <Link
+                    className="btn btn-sm btn-outline text-white hover:text-blue-400 rounded-sm"
+                    href="#"
+                  >
                     View
                   </Link>
-                  <Link className="btn btn-sm btn-primary" href="#">
+                  <Link
+                    className="btn btn-sm btn-primary text-white  hover:text-blue-400 rounded-sm"
+                    href="#"
+                  >
                     Contact
                   </Link>
                 </div>
@@ -165,11 +168,11 @@ export default function AboutUs() {
         {/* Footer CTA */}
         <div className="mt-12 bg-gradient-to-r from-primary/10 to-secondary/10 p-6 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <h4 className="text-lg font-semibold">
+            <h4 className="text-lg font-semibold text-gray-300">
               Ready to create your first event?
             </h4>
 
-            <p className="text-sm text-gray-600 dark:text-gray-300">
+            <p className="text-sm text-gray-300">
               Get started in minutes and invite your community.
             </p>
           </div>

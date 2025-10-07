@@ -43,7 +43,17 @@ const Bannar = () => {
           <button className="border border-[#8b5cf6] text-[#8b5cf6] hover:bg-[#8b5cf6] hover:text-white px-6 py-3 rounded-lg font-semibold transition">
             See Schedule
           </button>
+
+            {/* Scroll symbol */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 transform  animate-bounce">
+                <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+                    <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse" />
+                </div>
+            </div>
         </div>
+
+        
+          
       </div>
 
       {/* Right Section — Dynamic Banner */}
