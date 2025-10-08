@@ -1,5 +1,4 @@
-// components/AboutUs.jsx
-"use client"; // remove if using pages router non-client environment
+"use client"; 
 import Link from "next/link";
 import React from "react";
 

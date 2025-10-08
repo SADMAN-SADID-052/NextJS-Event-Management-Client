@@ -14,7 +14,7 @@ export default function LoginPage() {
         <div className="col-span-12 md:col-span-6 flex justify-center items-center">
           <Image
             className="hidden md:block"
-            src={"/assets/images/login/login.svg"}
+            src="/image1.png"
             width={460}
             height={500}
             alt={"Authentication Image"}

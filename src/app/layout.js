@@ -4,6 +4,8 @@ import "./globals.css";
 import NavBar from "./components/Navbar";
 import Providers from "./Redux/Providers";
 import Footer from "./components/Footer";
+import SessionProviderWrapper from "./components/SessionProviderWrapper";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,17 +28,14 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* ✅ Wrap the entire app inside Providers */}
-        <Providers>
-          <NavBar />
-          <main className="min-h-screen">{children}</main>
-
-          {/* Optional footer */}
-          {/* <footer className="text-center bg-stone-500">
-            Awesome NextJS Project
-          </footer> */}
-          <Footer></Footer>
-        </Providers>
+        {/* ✅ Client-only providers must be wrapped like this */}
+        <SessionProviderWrapper>
+          <Providers>
+            <NavBar />
+            <main className="min-h-screen">{children}</main>
+            <Footer />
+          </Providers>
+        </SessionProviderWrapper>
       </body>
     </html>
   );
