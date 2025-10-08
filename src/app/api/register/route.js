@@ -9,7 +9,10 @@ export async function POST(req) {
 
     const existingUser = await db.collection("users").findOne({ email });
     if (existingUser) {
-      return new Response(JSON.stringify({ message: "User already exists" }), { status: 400 });
+      return new Response(
+        JSON.stringify({ success: false, message: "User already exists" }),
+        { status: 400 }
+      );
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -19,11 +22,19 @@ export async function POST(req) {
       password: hashedPassword,
     });
 
-    return new Response(JSON.stringify({ message: "User registered successfully", id: result.insertedId }), {
-      status: 201,
-    });
+    return new Response(
+      JSON.stringify({
+        success: true,
+        message: "User registered successfully",
+        id: result.insertedId,
+      }),
+      { status: 201 }
+    );
   } catch (error) {
     console.error(error);
-    return new Response(JSON.stringify({ message: "Error signing up" }), { status: 500 });
+    return new Response(
+      JSON.stringify({ success: false, message: "Error signing up" }),
+      { status: 500 }
+    );
   }
 }

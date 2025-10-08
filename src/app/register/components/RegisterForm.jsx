@@ -2,11 +2,14 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { registerUser } from "@/app/actions/auth/registerUser";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 
 export default function RegisterForm() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,14 +24,18 @@ export default function RegisterForm() {
     try {
       const res = await registerUser({ name, email, password });
       if (res.success) {
-        setMessage("✅ Registration successful! You can now log in.");
+        toast.success("✅ Registration successful!");
         form.reset();
+
+         setTimeout(() => {
+          router.push("/login");
+        }, 1500);
       } else {
-        setMessage("❌ " + res.error);
+        toast.error(res.message || "❌ Registration failed!");
       }
     } catch (error) {
       console.error("Registration error:", error);
-      setMessage("❌ Something went wrong!");
+       toast.error("⚠️ Something went wrong. Try again!");
     } finally {
       setLoading(false);
     }

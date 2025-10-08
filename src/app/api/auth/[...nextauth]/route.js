@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import clientPromise from "@/lib/mongodb";
 import bcrypt from "bcrypt";
 
-// ✅ Configure NextAuth
+
 export const authOptions = {
   providers: [
     CredentialsProvider({

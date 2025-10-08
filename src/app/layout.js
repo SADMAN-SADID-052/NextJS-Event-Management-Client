@@ -5,6 +5,7 @@ import NavBar from "./components/Navbar";
 import Providers from "./Redux/Providers";
 import Footer from "./components/Footer";
 import SessionProviderWrapper from "./components/SessionProviderWrapper";
+import { Toaster } from "sonner";
 
 
 const geistSans = Geist({
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
             <NavBar />
             <main className="min-h-screen">{children}</main>
             <Footer />
+              <Toaster richColors position="top-center" />
           </Providers>
         </SessionProviderWrapper>
       </body>
