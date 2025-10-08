@@ -19,9 +19,9 @@ export default function Footer() {
             />
             <h1 className="text-2xl font-semibold text-white">EventSphere</h1>
           </div>
-          <p className="text-gray-400 text-sm">
-            Providing reliable tech blogs since 2017
-          </p>
+          {/* <p className="text-gray-400 text-sm">
+          
+          </p> */}
         </div>
 
         {/* Quick Links */}

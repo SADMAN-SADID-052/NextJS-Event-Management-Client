@@ -1,11 +1,12 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function EventsPage() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [joinedEvents, setJoinedEvents] = useState([]); 
- 
+  const [joinedEvents, setJoinedEvents] = useState([]);
+
   useEffect(() => {
     async function fetchEvents() {
       try {
@@ -30,7 +31,6 @@ export default function EventsPage() {
 
   // Handle join event
   const handleJoin = async (id) => {
-    
     if (joinedEvents.includes(id)) {
       alert("You already joined this event!");
       return;
@@ -47,7 +47,9 @@ export default function EventsPage() {
         setJoinedEvents((prev) => [...prev, id]);
         setEvents((prevEvents) =>
           prevEvents.map((e) =>
-            e._id === id ? { ...e, attendeeCount: (e.attendeeCount || 0) + 1 } : e
+            e._id === id
+              ? { ...e, attendeeCount: (e.attendeeCount || 0) + 1 }
+              : e
           )
         );
       } else {
@@ -68,7 +70,7 @@ export default function EventsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10 px-6">
+    <div className=" relative top-0 transition-all duration-300 ease-out hover:-top-2 min-h-screen bg-gray-200 py-10 px-6">
       <h2 className="text-3xl font-bold text-center mb-8">All Events</h2>
 
       {events.length === 0 ? (
@@ -76,48 +78,61 @@ export default function EventsPage() {
           No events found. Add one to get started!
         </p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {events.map((event) => (
             <div
               key={event._id}
-              className="bg-white p-5 rounded-xl shadow-md hover:shadow-xl transition-all"
+              className="group bg-white p-5 rounded-xl shadow-md hover:shadow-xl transition-all"
             >
               <img
                 src={event.image || "https://via.placeholder.com/300x200"}
                 alt={event.title}
                 className="w-full h-48 object-cover rounded-lg mb-4"
               />
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">
-                {event.title}
+
+              <div className="flex items-center gap-3  py-2">
+                <Image
+                  src="https://i.pravatar.cc/70"
+                  alt={event.name}
+                  width={40}
+                  height={40}
+                  className="w-10 h-10 rounded-full"
+                />
+                <div>
+                  <h4 className="font-medium">{event.name}</h4>
+                  <p className="text-sm text-gray-400">
+                    {new Date(event.dateTime).toLocaleString()}
+                  </p>
+                </div>
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-gray-800 group-hover:text-blue-500">
+                {event.title} 
               </h3>
+
               <p className="text-gray-700 mb-2">
-                <span className="font-medium">By:</span> {event.name}
+                <span className="font-medium">Location:</span> {event.location}
               </p>
-              <p className="text-gray-700 mb-2">
-                <span className="font-medium">📍 Location:</span> {event.location}
-              </p>
-              <p className="text-gray-700 mb-2">
-                <span className="font-medium">📅 Date:</span>{" "}
-                {new Date(event.dateTime).toLocaleString()}
-              </p>
+
               <p className="text-gray-600 text-sm mb-3">
                 {event.description?.slice(0, 100)}...
               </p>
 
-              <div className="flex items-center justify-between mt-3">
-                <p className="text-blue-600 font-semibold">
-                  👥 Attendees: {event.attendeeCount || 0}
-                </p>
+              <div className="flex items-center justify-between mt-10">
+                <div className="flex items-center gap-5">
+                  <p className="">👥 {event.attendeeCount || 0}</p>
+                  <span>👍 20</span>
+                  <span>💬 28</span>
+                </div>
                 <button
                   onClick={() => handleJoin(event._id)}
-                  className={`px-4 py-2 rounded-lg text-white font-medium transition ${
+                  className={`px-4 py-2 rounded-lg  font-medium transition ${
                     joinedEvents.includes(event._id)
                       ? "bg-gray-400 cursor-not-allowed"
-                      : "bg-blue-600 hover:bg-blue-700"
+                      : "border-1 border-blue-500 text-gray-900 group-hover:bg-blue-100 group-hover:text-[#3a75f4]"
                   }`}
                   disabled={joinedEvents.includes(event._id)}
                 >
-                  {joinedEvents.includes(event._id) ? "Joined" : "Join Event"}
+                  {joinedEvents.includes(event._id) ? "Joined" : "Join Event →"}
                 </button>
               </div>
             </div>
