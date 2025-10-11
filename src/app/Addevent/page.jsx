@@ -1,19 +1,48 @@
 "use client";
 
-import { useState } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export default function AddEventPage() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
   const [formData, setFormData] = useState({
     title: "",
     name: "",
     image: "",
     dateTime: "",
     location: "",
-    attendeeCount: "",
+    attendeeCount: 0,
     description: "",
   });
 
-  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      toast.error("You must be logged in to add an event.");
+      router.push("/register");
+    }
+  }, [status, router]);
+
+  // if (status === "loading") {
+  //   return (
+  //     <div className="flex justify-center items-center h-screen">
+  //       <p className="text-lg text-gray-600">Checking authentication...</p>
+  //     </div>
+  //   );
+  // }
+
+  // 🔥 Pre-fill "name" field from session
+  useEffect(() => {
+    if (session?.user?.name) {
+      setFormData((prev) => ({ ...prev, name: session.user.name }));
+    }
+  }, [session]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,40 +50,49 @@ export default function AddEventPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("/api/addEvent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+    setLoading(true);
 
-    const data = await res.json();
-
-    if (res.ok) {
-      setMessage("✅ Event added successfully!");
-      setFormData({
-        title: "",
-        name: "",
-        image: "",
-        dateTime: "",
-        location: "",
-        attendeeCount: "",
-        description: "",
+    try {
+      const res = await fetch("/api/addEvent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
-    } else {
-      setMessage("❌ Failed to add event");
+
+      const data = await res.json();
+
+      if (res.ok) {
+        toast.success("✅ Event added successfully!");
+        setFormData({
+          title: "",
+          name: session?.user?.name || "",
+          image: "",
+          dateTime: "",
+          location: "",
+          attendeeCount: 0,
+          description: "",
+        });
+      } else {
+        toast.error(data.message || "❌ Failed to add event");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("⚠️ Something went wrong!");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className=" min-h-screen  flex items-center justify-center p-6">
+    <div className="min-h-screen flex items-center justify-center p-6">
       <div className="bg-purple-500 p-8 rounded-2xl shadow-lg w-full max-w-lg">
-        <h2 className="text-2xl font-semibold text-center mb-6">
+        <h2 className="text-2xl font-semibold text-center mb-6 text-white">
           Add New Event
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block mb-1 font-medium">Event Title</label>
+            <label className="block mb-1 font-medium text-white">Event Title</label>
             <input
               type="text"
               name="title"
@@ -66,19 +104,18 @@ export default function AddEventPage() {
           </div>
 
           <div>
-            <label className="block mb-1 font-medium">Name (Posted By)</label>
+            <label className="block mb-1 font-medium text-white">Posted By</label>
             <input
               type="text"
               name="name"
               value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full p-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+              readOnly
+              className="w-full p-2 border bg-gray-100 rounded-md"
             />
           </div>
 
           <div>
-            <label className="block mb-1 font-medium">Image URL</label>
+            <label className="block mb-1 font-medium text-white">Image URL</label>
             <input
               type="url"
               name="image"
@@ -89,7 +126,7 @@ export default function AddEventPage() {
           </div>
 
           <div>
-            <label className="block mb-1 font-medium">Date and Time</label>
+            <label className="block mb-1 font-medium text-white">Date and Time</label>
             <input
               type="datetime-local"
               name="dateTime"
@@ -101,7 +138,7 @@ export default function AddEventPage() {
           </div>
 
           <div>
-            <label className="block mb-1 font-medium">Location</label>
+            <label className="block mb-1 font-medium text-white">Location</label>
             <input
               type="text"
               name="location"
@@ -112,20 +149,8 @@ export default function AddEventPage() {
             />
           </div>
 
-            <div>
-            <label className="block mb-1 font-medium">Attendence</label>
-            <input
-              type="number"
-              name="location"
-              value="0"
-              onChange={handleChange}
-              required
-              className="w-full p-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
-            />
-          </div>
-
           <div>
-            <label className="block mb-1 font-medium">Description</label>
+            <label className="block mb-1 font-medium text-white">Description</label>
             <textarea
               name="description"
               value={formData.description}
@@ -137,17 +162,12 @@ export default function AddEventPage() {
 
           <button
             type="submit"
+            disabled={loading}
             className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
           >
-            Add Event
+            {loading ? "Adding Event..." : "Add Event"}
           </button>
         </form>
-
-        {message && (
-          <p className="text-center text-green-600 mt-4 font-medium">
-            {message}
-          </p>
-        )}
       </div>
     </div>
   );

@@ -28,7 +28,7 @@ export default function RegisterForm() {
         form.reset();
 
          setTimeout(() => {
-          router.push("/login");
+          router.push("/");
         }, 1500);
       } else {
         toast.error(res.message || "❌ Registration failed!");

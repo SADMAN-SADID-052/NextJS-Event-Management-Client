@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 // import SocialLogin from "./SocialLogin";
+// import SocialLogin from "./SocialLogin";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -31,7 +32,7 @@ export default function LoginForm() {
       }
       //console.log({ email, password });
     } catch (error) {
-      console.log(error);
+      
       toast.error("FAILED to Log In");
     }
   };
@@ -62,9 +63,9 @@ export default function LoginForm() {
       <button className="w-full h-12 bg-sky-500 text-white font-bold mt-4 rounded-2xl">
         Sign In
       </button>
-      <p className="text-center">Or Sign In with</p>
+      <p className="text-center mt-4 mb-4">Or Sign In with</p>
       {/* <SocialLogin /> */}
-      <p className="text-center">
+      <p className="text-center mt-4">
         Already have an account?{" "}
         <Link href="/register" className="text-sky-500 font-bold">
         

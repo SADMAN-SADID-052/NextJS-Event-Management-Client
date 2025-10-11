@@ -22,7 +22,7 @@ export default function SocialLogin() {
   }, [session?.status]);
 
   return (
-    <div className="flex justify-center gap-8">
+    <div className="flex justify-center gap-4">
       <p
         onClick={() => handleSocialLogin("google")}
         className="bg-slate-200 rounded-full p-3"
