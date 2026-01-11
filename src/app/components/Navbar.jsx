@@ -158,10 +158,7 @@ export default function NavBar() {
                   <Link href="/dashboard">Dashboard</Link>
                 </li>
                 <li>
-                  <button
-                    onClick={() => signOut()}
-                    className="text-red-500"
-                  >
+                  <button onClick={() => signOut()} className="text-red-500">
                     Logout
                   </button>
                 </li>
@@ -174,23 +171,25 @@ export default function NavBar() {
             <input type="checkbox" checked={themeMode === "dark"} readOnly />
 
             {/* Sun */}
-            <svg
+              <svg
               onClick={() => dispatch(toggleTheme())}
               className="swap-off h-8 w-8 fill-current"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
-              <path d="M12 4.5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v.5a1 1 0 0 0 1 1Z" />
+              <path d="M21.64 13a1 1 0 0 0-1.05-.14A8 8 0 0 1 9.08 5.49a1 1 0 0 0-1.34-1.14A10 10 0 1 0 22 14a1 1 0 0 0-.36-1Z" />
             </svg>
+         
 
             {/* Moon */}
-            <svg
+          
+               <svg
               onClick={() => dispatch(toggleTheme())}
-              className="swap-on h-8 w-8 fill-current"
+              className="swap-on h-8 w-8 fill-current cursor-pointer"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
-              <path d="M21.64 13a1 1 0 0 0-1.05-.14A8 8 0 0 1 9.08 5.49a1 1 0 0 0-1.34-1.14A10 10 0 1 0 22 14a1 1 0 0 0-.36-1Z" />
+              <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12Zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0-12.5a1 1 0 0 1-1-1V1.5a1 1 0 1 1 2 0V2.5a1 1 0 0 1-1 1Zm0 20a1 1 0 0 1-1-1V21.5a1 1 0 1 1 2 0V22.5a1 1 0 0 1-1 1Zm10.5-10.5a1 1 0 0 1-1 1H21.5a1 1 0 1 1 0-2H21.5a1 1 0 0 1 1 1ZM3.5 12.5a1 1 0 0 1-1 1H1.5a1 1 0 1 1 0-2H2.5a1 1 0 0 1 1 1Zm15.03-6.53a1 1 0 0 1 0 1.41l-1.06 1.06a1 1 0 1 1-1.41-1.41l1.06-1.06a1 1 0 0 1 1.41 0Zm-12.1 12.1a1 1 0 0 1 0 1.41l-1.06 1.06a1 1 0 1 1-1.41-1.41l1.06-1.06a1 1 0 0 1 1.41 0Zm12.1 1.06a1 1 0 0 1-1.41 0l-1.06-1.06a1 1 0 1 1 1.41-1.41l1.06 1.06a1 1 0 0 1 0 1.41Zm-12.1-12.1a1 1 0 0 1-1.41 0L3.96 6.97a1 1 0 1 1 1.41-1.41l1.06 1.06a1 1 0 0 1 0 1.41Z" />
             </svg>
           </label>
         </div>
