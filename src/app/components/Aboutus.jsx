@@ -124,7 +124,7 @@ export default function AboutUs() {
         <div
           className={`mt-12 p-6 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4 transition-colors duration-300 ${
             isDark
-              ? "bg-gradient-to-r from-primary/20 to-secondary/20"
+              ? "bg-linear-to-r from-primary/20 to-secondary/20"
               : "bg-blue-50"
           }`}
         >
